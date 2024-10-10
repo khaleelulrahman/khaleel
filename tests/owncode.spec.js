@@ -31,24 +31,35 @@ test('google page open', async({browser})=>
 
 });
 
-test.only('dropdown scenario', async({page})=>
+test.only('multiple field type  scenario', async({page})=>
 {
     await  page.goto('https://rahulshettyacademy.com/loginpagePractise/');
    //capture the title of the page and match with the expected title
    console.log(await page.title());
    await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
    //enter incorrect login credentials and capture the error message
-   await page.locator('#username').fill("rahushttyacademy");
+   await page.locator('#username').fill("rahulshettyacademy");
    await page.locator('#password').fill("learning");
+
+   //selecting dropdown fields
    const dropdown= page.locator("select.form-control");
   await dropdown.selectOption("consult");
   //click on radio button
-  await page.locator('.radiotextsty').last().click();
-  //clicking okay on popup window
-  await page.locator('#okayBtn').click();
-// await page.locator('#terms').click();
-  await page.locator("signInBtn").click();
+  await page.locator(".radiotextsty").last().click();
+   // handlying popup window
+   await page.locator("#okayBtn").click();
+
+  console.log(await page.locator(".radiotextsty").last().isChecked());
+await page.locator('#terms').click();
+//click on check box
+ await page.locator("#signInBtn").click();
+ //unchecking check box 
+ await page.locator('#terms').uncheck();
+ expect(await page.locator('#terms').isChecked()).toBeFalsy();
+
+
 await page.pause();
+
 
 });
     
