@@ -86,6 +86,14 @@ await linktext.click(),
     
        const txtplease=arraytext[0]
        console.log(txtplease)
+
+       //to print us
+       const us=labeltext.split("email ")
+       const ustxt=us[1].split(" ")[0]
+       console.log(ustxt
+
+       )
+
         
 
         //to print email id
