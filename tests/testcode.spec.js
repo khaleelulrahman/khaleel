@@ -78,7 +78,22 @@ await linktext.click(),
         ])
 
        const labeltext = await newpage.locator(".red").textContent();
-        console.log(labeltext);
+       /*above returns " Please email us at mentor@rahulshettyacademy.com with below 
+       template to receive response*/
+
+       // to print Please from above sentence
+       const arraytext=labeltext.split("email")
+    
+       const txtplease=arraytext[0]
+       console.log(txtplease)
+        
+
+        //to print email id
+        const sentence=labeltext.split("@")
+        const emailid=sentence[1].split(" ")[0]
+
+        console.log(emailid);
+
         page.pause();
 
 
